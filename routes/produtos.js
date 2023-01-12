@@ -5,15 +5,22 @@ const router = express.Router();
 router.get('/', (req, res, next) => {
     res.status(200).send({
         mensagem: 'Retorno de todos os produtos'
-    })
+    });
 });
 
 //Inserir e atualizar um produto
 router.post('/', (req, res, next) => {
+
+    const produto = {
+        nome: req.body.nome,
+        preco: req.body.preco
+    }
+
     res.status(201).send({
-        mensagem: 'Produto inserido com sucesso!'
-    })
-})
+        mensagem: 'Produto inserido com sucesso!',
+        produtoCriado: produto
+    });
+});
 
 //Retorna apenas um produto específico
 router.get('/:id_produto', (req, res, next) => {
@@ -29,20 +36,20 @@ router.get('/:id_produto', (req, res, next) => {
             mensagem: 'Você passou um ID'
         });
     }
-})
+});
 
 // Altera um produto
 router.patch('/', (req, res, next) => {
     res.status(200).send({
         mensagem: 'Produto alterado com sucesso!'
-    })
+    });
 });
 
 //Deleta um produto
 router.delete('/', (req, res, next) => {
     res.status(200).send({
         mensagem: 'Produto deletado com sucesso!'
-    })
+    });
 });
 
 
